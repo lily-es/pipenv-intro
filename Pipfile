@@ -1,0 +1,33 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+flake8 = "*"
+pytest = "*"
+
+[packages]
+requests = "*"
+#requests = ">=2.20" #Version equal or higher to 2.20
+#requests = "<2.21" #Version lower than 2.21
+#requests = "==2.20" #Excatly version 2.20
+#requests = "~=2.20" #Locks major version only(2.*)
+#requests = {version=">=2.16,<2.24"} #Version between 2.16(inclusive) and 2.24
+
+[requires]
+python_version = "3.8" #This is not necessary. If it is not present it will use your default python version
+
+
+[scripts]
+app = "python intro/country.py"
+format = "black intro/ test/"
+format-check = "black --check intro/ test/"
+format-diff = "black --diff --color intro/ test/"
+lint = "flake8 intro/ test/"
+build = "python setup.py sdist bdist_wheel"
+test = "pytest test/"
+
+[pipenv]
+allow_prereleases = true #This is only needed if you wish to install a prerelease for a package(such as black)
